@@ -1,6 +1,6 @@
 # resilience4j-lab
 
-== Introduction
+## Introduction
 
 Resilience4j is a lightweight fault tolerance library designed for functional programming.
 Resilience4j provides higher-order functions (decorators) to enhance any functional interface,
@@ -10,8 +10,7 @@ The advantage is that you have the choice to select the decorators you need and 
 
 Resilience4j 2 requires Java 17.
 
-[source,java]
-----
+```
 // Create a CircuitBreaker with default configuration
 CircuitBreaker circuitBreaker = CircuitBreaker.ofDefaults("backendService");
 
@@ -58,12 +57,12 @@ CompletableFuture<String> future = Decorators.ofSupplier(supplier)
     .withFallback(asList(TimeoutException.class, CallNotPermittedException.class, BulkheadFullException.class),
       throwable -> "Hello from Recovery")
     .get().toCompletableFuture();
-----
+```
 
 NOTE: With Resilience4j you don’t have to go all-in, you can
 https://mvnrepository.com/artifact/io.github.resilience4j[*pick what you need*].
 
-==  Documentation
+##  Documentation
 
 Setup and usage is described in our *https://resilience4j.readme.io/docs[User Guide]*.
 
@@ -71,7 +70,7 @@ Setup and usage is described in our *https://resilience4j.readme.io/docs[User Gu
 
 - https://github.com/lmhmhl/Resilience4j-Guides-Chinese[这是Resilience4j的非官方中文文档 Chinese translation by volunteers(Unofficial)]
 
-== Overview
+## Overview
 
 Resilience4j provides several core modules:
 
