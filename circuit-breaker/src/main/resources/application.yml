@@ -1,0 +1,29 @@
+server:
+  port: 8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  health:
+    circuitbreakers:
+      enabled: true
+
+resilience4j.circuitbreaker:
+  instances:
+    backend:
+      register-health-indicator: true
+      sliding-window-type: count_based
+      sliding-window-size: 6
+      failure-rate-threshold: 50
+      slow-call-rate-threshold: 50
+      permitted-number-of-calls-in-half-open-state: 2
+      max-wait-duration-in-half-open-state: 10s
+      wait-duration-in-open-state: 10s
+      slow-call-duration-threshold: 2s
+      writable-stack-trace-enabled: true
+      automatic-transition-from-open-to-half-open-enabled: true
